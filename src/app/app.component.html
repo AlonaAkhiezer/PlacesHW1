@@ -1,26 +1,6 @@
 <div class="element">
-  <div class="element-left">  
-  <div class="element-bg-img"><img *ngIf="currentPlace" [src]="currentPlace.img" alt="" > </div>
-    <div class="element-left-bottom">
-     <div class="ele-strip">
-        <ul>
-            <li *ngFor="let type of placesTypes">
-                <a (click)="selectType(type)" >{{ type }}</a>
-            </li>
-        </ul>
-    </div>
-    <div class="village">
-        <h3>{{ selectedType }}</h3>
-        <span class="line"> </span>
-        <div class="activity_box">
-            <div class="scrollbar" id="style-2">
-                <div class="activity-row" *ngFor="let place of places | placesFilter:selectedType" (click)="selectPlace(place)">
-                  <app-place [place]="place"></app-place>                    
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
+  <div class="element-left"> 
+    <app-places-list (placeSelected)="initWeatherSocial($event)"></app-places-list> 
   </div>
   <div class="element-right">
     <app-weather [weather]="weather"></app-weather>  
